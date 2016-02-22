@@ -15,7 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 /**
- *
+ *Entité gérant les realisateurs.
  * @author admin
  */
 @Entity
