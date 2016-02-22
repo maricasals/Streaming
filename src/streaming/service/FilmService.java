@@ -5,6 +5,7 @@
  */
 package streaming.service;
 
+import streaming.exception.ExceptionSynopsisNullOuVide;
 import java.util.List;
 import streaming.dao.FilmDAO;
 import streaming.entity.Film;
@@ -21,8 +22,17 @@ public class FilmService {
 
     
     
-    
-    public void ajouter(Film l){
+    public void ajouter(Film l) throws ExceptionSynopsisNullOuVide{
+        if (l.getSinopsis().equals(null) || l.getSinopsis().equals("")){
+            throw new ExceptionSynopsisNullOuVide();
+        }
+        String s1 ="ZUT";
+        String s2 = "***FLUTE***";
+        if (l.getTitre().contains(s1) || l.getSinopsis().contains(s1)){
+            l.setTitre(l.getTitre().replaceAll(s1, s2));
+            System.out.println(l.getTitre());
+            
+        }
         dao.ajouter(l);
     }
     
