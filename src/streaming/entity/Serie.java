@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import streaming.exeptions.SynopsisVideException;
 
 /**
  *
@@ -28,15 +29,15 @@ public class Serie implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-     private String titre_serie;
-     private String synopsis;
+    private String titre_serie;
+    private String synopsis;
      
-     @OneToMany(mappedBy = "serie" )
-     private List<Saison> saisons = new ArrayList<>();
+    @OneToMany(mappedBy = "serie" )
+    private List<Saison> saisons = new ArrayList<>();
      
-     @ManyToOne
-     @JoinColumn(name = "PAYS_ID")
-     private Pays pays;
+    @ManyToOne
+    @JoinColumn(name = "PAYS_ID")
+    private Pays pays;
 
     public Long getId() {
         return id;
@@ -68,7 +69,50 @@ public class Serie implements Serializable {
 
     @Override
     public String toString() {
-        return "streaming.entity.Serie[ id=" + id + " ]";
+        return "streaming.entity.Serie[ id=" + id + " + titre="+titre_serie+ " + synopsis="+ synopsis+" ]";
     }
+
+    public String getTitre_serie() {
+        return titre_serie;
+    }
+
+    public void setTitre_serie(String titre_serie) {
+        this.titre_serie = titre_serie;
+    }
+
+    public String getSynopsis() {
+        return synopsis;
+    }
+
+    public void setSynopsis(String synopsis) {
+        this.synopsis = synopsis;
+    }
+
+    public List<Saison> getSaisons() {
+        return saisons;
+    }
+
+    public void setSaisons(List<Saison> saisons) {
+        this.saisons = saisons;
+    }
+
+    public Pays getPays() {
+        return pays;
+    }
+
+    public void setPays(Pays pays) {
+        this.pays = pays;
+    }
+
+    public Serie() {
+    }
+
+    public Serie(String titre_serie, String synopsis) {
+        this.titre_serie = titre_serie;
+        this.synopsis = synopsis;
+    }
+    
+    
+    
     
 }
