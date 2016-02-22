@@ -402,7 +402,7 @@ public class StreamingTest {
         System.out.println(filmsPlusAncien);
     }
     
-    @Test
+//    @Test
     public void req12(){
         EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
         Double moyen = (Double) em.createQuery("SELECT AVG(f.anneeProd) FROM Film f").getSingleResult();
