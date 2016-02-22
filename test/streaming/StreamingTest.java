@@ -415,6 +415,6 @@ public class StreamingTest {
         Collection<Film> filmsAutresQueActionCohen = em.createQuery("SELECT, c COUNT(f) AS total FROM  ").getResultList();
         System.out.println(filmsAutresQueActionCohen);
     }
-
+//yoooo
 
 }
