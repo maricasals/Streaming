@@ -20,6 +20,7 @@ import javax.persistence.OneToMany;
 
 /**
  * Entité gérant les films
+ * Je suis passé par la ! Arthur
  * @author admin
  */
 @Entity
