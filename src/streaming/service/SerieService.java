@@ -19,7 +19,8 @@ public class SerieService {
     private SerieDAO dao = new SerieDAO();
     Serie l = new Serie();
 
-    public void ajouter(Serie l) {
+    public void ajouter(Serie l) throws SynopsisVideException {
+        moderationSynopsis(l);
         dao.ajouter(l);
     }
 
@@ -47,8 +48,8 @@ public class SerieService {
         
 
         if (s.getTitre_serie().contains("ZUT") || s.getSynopsis().contains("ZUT")){
-            s.setTitre_serie(s.getTitre_serie().replaceAll("zut", "flute"));
-            s.setSynopsis(s.getSynopsis().replaceAll("zut", "flute"));
+            s.setTitre_serie(s.getTitre_serie().replaceAll("ZUT", "flute"));
+            s.setSynopsis(s.getSynopsis().replaceAll("ZUT", "flute"));
             System.out.println(toString());
         }
     }
