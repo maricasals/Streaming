@@ -5,7 +5,10 @@
  */
 package streaming.service;
 
+import java.util.Collection;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 import streaming.dao.SerieDAO;
 import streaming.entity.Serie;
 import streaming.exeptions.SynopsisVideException;
@@ -42,15 +45,27 @@ public class SerieService {
     }
 
     public void moderationSynopsis(Serie s) throws SynopsisVideException {
-        if (s.getSynopsis() == null || s.getSynopsis().length()==0) {
+        if (s.getSynopsis() == null || s.getSynopsis().length() == 0) {
             throw new SynopsisVideException();
         }
-        
 
-        if (s.getTitre_serie().contains("ZUT") || s.getSynopsis().contains("ZUT")){
+        if (s.getTitre_serie().contains("ZUT") || s.getSynopsis().contains("ZUT")) {
             s.setTitre_serie(s.getTitre_serie().replaceAll("ZUT", "flute"));
             s.setSynopsis(s.getSynopsis().replaceAll("ZUT", "flute"));
             System.out.println(toString());
         }
+    }
+
+    public void ListerSeriesParPays(Long idPays) {
+        EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
+        Collection<Serie> listSeriesDuPays = em.createQuery("SELECT s FROM Serie s WHERE s.pays.id='" + idPays + "'").getResultList();
+        System.out.println(listSeriesDuPays);
+    }
+
+    public void ListerSeriesParTitre(String Titre) {
+        EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
+        Collection<Serie> seriesContenantTitre =  em.createQuery("SELECT s FROM Serie s WHERE UPPER(s.titre_serie) LIKE UPPER('%"+Titre+"%')").getResultList();
+//        Collection<Serie> seriesContenantTitre = em.createQuery("SELECT s FROM Serie s WHERE s.titre_serie='"+Titre+"'").getResultList();
+        System.out.println(seriesContenantTitre);
     }
 }
