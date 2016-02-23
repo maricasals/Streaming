@@ -33,7 +33,7 @@ public class RealisateurDAO {
     public void supprimer(Realisateur g){
         EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
         em.getTransaction().begin();
-        em.createQuery("DELETE FROM Realisateur s WHERE g.id="+g.getId()).executeUpdate();
+        em.createQuery("DELETE FROM Realisateur s WHERE s.id="+g.getId()).executeUpdate();
         em.getTransaction().commit();
     }
     

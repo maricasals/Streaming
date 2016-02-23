@@ -162,10 +162,10 @@ public class JFramePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jBEpisodeActionPerformed
 
     private void jBRealisateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRealisateurActionPerformed
-//        supprimerJPCentral();
-//        jpCentral=new JPanelListeRealisateur();
-//        add(jpCentral,BorderLayout.CENTER);
-//        repaint();
+        supprimerJPCentral();
+        jpCentral=new JPannelListeRealisateur();
+        add(jpCentral,BorderLayout.CENTER);
+        repaint();
     }//GEN-LAST:event_jBRealisateurActionPerformed
 
     private void jBGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGenreActionPerformed
@@ -233,7 +233,10 @@ public class JFramePrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFramePrincipal().setVisible(true);
+                JFramePrincipal jf = new JFramePrincipal();
+                jf.setSize(800,600);
+                jf.setVisible(true);
+                
             }
         });
     }
