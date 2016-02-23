@@ -148,17 +148,17 @@ public class JFramePrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBFilmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFilmActionPerformed
-//        supprimerJPCentral();
-//        jpCentral=new JPanelListeFilm();
-//        add(jpCentral,BorderLayout.CENTER);
-//        repaint();
+        supprimerJPCentral();
+        jpCentral=new JPannelListeFilm();
+        add(jpCentral,BorderLayout.CENTER);
+        repaint();
     }//GEN-LAST:event_jBFilmActionPerformed
 
     private void jBEpisodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEpisodeActionPerformed
-//        supprimerJPCentral();
-//        jpCentral=new JPanelListeEpisode();
-//        add(jpCentral,BorderLayout.CENTER);
-//        repaint();
+        supprimerJPCentral();
+        jpCentral=new JPannelListeEpisode();
+        add(jpCentral,BorderLayout.CENTER);
+        repaint();
     }//GEN-LAST:event_jBEpisodeActionPerformed
 
     private void jBRealisateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRealisateurActionPerformed
@@ -170,37 +170,37 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
     private void jBGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGenreActionPerformed
 //        supprimerJPCentral();
-//        jpCentral=new JPanelListeGenre();
+//        jpCentral=new JPannelListeGenre();
 //        add(jpCentral,BorderLayout.CENTER);
 //        repaint();
     }//GEN-LAST:event_jBGenreActionPerformed
 
     private void jBLienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLienActionPerformed
-//        supprimerJPCentral();
-//        jpCentral=new JPanelListeLien();
-//        add(jpCentral,BorderLayout.CENTER);
-//        repaint();
+        supprimerJPCentral();
+        jpCentral=new JPannelListeLien();
+        add(jpCentral,BorderLayout.CENTER);
+        repaint();
     }//GEN-LAST:event_jBLienActionPerformed
 
     private void jBPaysActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPaysActionPerformed
-//        supprimerJPCentral();
-//        jpCentral=new JPanelListePays();
-//        add(jpCentral,BorderLayout.CENTER);
-//        repaint();
+        supprimerJPCentral();
+        jpCentral=new JPannelListePays();
+        add(jpCentral,BorderLayout.CENTER);
+        repaint();
     }//GEN-LAST:event_jBPaysActionPerformed
 
     private void jBSaisonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSaisonActionPerformed
-//        supprimerJPCentral();
-//        jpCentral=new JPanelListeSaison();
-//        add(jpCentral,BorderLayout.CENTER);
-//        repaint();
+        supprimerJPCentral();
+        jpCentral=new JPannelListeSaison();
+        add(jpCentral,BorderLayout.CENTER);
+        repaint();
     }//GEN-LAST:event_jBSaisonActionPerformed
 
     private void jBSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSerieActionPerformed
-//        supprimerJPCentral();
-//        jpCentral=new JPanelListeSerie();
-//        add(jpCentral,BorderLayout.CENTER);
-//        repaint();
+        supprimerJPCentral();
+        jpCentral=new JPannelListeSerie();
+        add(jpCentral,BorderLayout.CENTER);
+        repaint();
     }//GEN-LAST:event_jBSerieActionPerformed
 
     /**
