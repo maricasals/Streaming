@@ -6,6 +6,8 @@
 package streaming.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,7 +28,8 @@ public class Episode implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    private String num_Episode;
+    
+    private Long num_Episode;
     private String titre_Episode;
     
     @ManyToOne
@@ -34,6 +37,9 @@ public class Episode implements Serializable {
     private Saison saison;
     
     @OneToMany(mappedBy = "quel_episode")
+    private List<Lien> episodeLien = new ArrayList<Lien>();
+    
+    
 
     public Long getId() {
         return id;

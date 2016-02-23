@@ -10,14 +10,17 @@ import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import junit.framework.Assert;
 import streaming.entity.Film;
-import streaming.entity.Realisateur;
 import streaming.entity.Genre;
 import streaming.entity.Pays;
-import streaming.service.DBService;
+import streaming.entity.Serie;
+import streaming.service.EpisodeService;
 import streaming.service.FilmService;
 import streaming.service.GenreService;
+import streaming.service.LienService;
 import streaming.service.PaysService;
 import streaming.service.RealisateurService;
+import streaming.service.SaisonService;
+import streaming.service.SerieService;
 
 /**
  *
@@ -29,6 +32,10 @@ public class StreamingTest {
     private PaysService paysService = new PaysService();
     private RealisateurService realisateurService = new RealisateurService();
     private FilmService filmService = new FilmService();
+    private SerieService serieService = new SerieService();
+    private SaisonService saisonService = new SaisonService();
+    private LienService lienService = new LienService();
+    private EpisodeService episodeService = new EpisodeService();
     
 //    @Before
 //    public void beforeTest() {
@@ -283,6 +290,25 @@ public class StreamingTest {
 //                    
 //            filmService.ajouter(f);
 //        }
+//    {
+//            Pays p = paysService.recherchePays(2L);
+//            Serie serie = new Serie(1L,"Dexter","blablab",p);
+//            SerieService.ajouter(serie);
+//            for(Long i=1L;i<9L;i++){ //9 ou %9L
+//                Saison s = new Saison(i,i,serie);
+//                saisonService.ajouter(s);
+//                for(Long j=1L;j<9L;j++){
+//                    Episode e = new Episode(j,j,"titre",s);
+//                    episodeService.ajouter(e);
+//                    for(Long k=1L; k<9L; k++){
+//                        Lien l = new Lien(k,"url",e);
+//                        lienService.ajouter(l);
+//                    }
+//                }
+//            }
+//    }
+//}
+          
 //    }
 
 //    @Test
