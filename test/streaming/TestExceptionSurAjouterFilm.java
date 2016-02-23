@@ -21,7 +21,7 @@ public class TestExceptionSurAjouterFilm {
     
 //    @Test
     public void TestExceptionSurAjouterFilm() throws ExceptionSynopsisNullOuVide{
-        
+       
         Film f = new Film();
         f.setSinopsis("yo");
         f.setTitre("aieieieiZUTbdbjdbjZUT");

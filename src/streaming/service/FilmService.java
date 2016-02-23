@@ -39,7 +39,7 @@ public class FilmService {
         dao.ajouter(l);
     }
     
-    public List listerParGenre(Long id){
+    public List listerParGenre(Long id){ 
         List<Film> listeFilm = new ArrayList<>();
         EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
         listeFilm=em.createQuery("SELECT f FROM Film f JOIN f.genre g WHERE g.id='"+id+"'").getResultList();
