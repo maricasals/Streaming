@@ -19,7 +19,7 @@ import streaming.service.FilmService;
 public class TestExceptionSurAjouterFilm {
     private FilmService servicefilm = new FilmService();
     
-    @Test
+//    @Test
     public void TestExceptionSurAjouterFilm() throws ExceptionSynopsisNullOuVide{
         
         Film f = new Film();
@@ -28,10 +28,13 @@ public class TestExceptionSurAjouterFilm {
         servicefilm.ajouter(f);
         
     }
+    @Test
+    public void testlisterParGenre(){
+        
+//        servicefilm.listerParGenre(1L);
+//        servicefilm.listerParPays(1L);
+        servicefilm.listerParTitreOuRealisateur("sin");
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    }
+
 }
