@@ -42,6 +42,18 @@ public class Serie implements Serializable {
         return id;
     }
 
+    public Serie(){
+    }
+    
+    public Serie(Long id, String titre_serie, String synopsis, Pays pays) {
+        this.id = id;
+        this.titre_serie = titre_serie;
+        this.synopsis = synopsis;
+        this.pays = pays;
+    }
+    
+    
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -103,8 +115,6 @@ public class Serie implements Serializable {
         this.pays = pays;
     }
 
-    public Serie() {
-    }
 
     public Serie(String titre_serie, String synopsis) {
         this.titre_serie = titre_serie;

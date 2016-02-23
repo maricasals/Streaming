@@ -39,6 +39,48 @@ public class Episode implements Serializable {
     @OneToMany(mappedBy = "quel_episode")
     private List<Lien> episodeLien = new ArrayList<Lien>();
     
+    public Episode(){
+    }
+
+    public Long getNum_Episode() {
+        return num_Episode;
+    }
+
+    public void setNum_Episode(Long num_Episode) {
+        this.num_Episode = num_Episode;
+    }
+
+    public String getTitre_Episode() {
+        return titre_Episode;
+    }
+
+    public void setTitre_Episode(String titre_Episode) {
+        this.titre_Episode = titre_Episode;
+    }
+
+    public Saison getSaison() {
+        return saison;
+    }
+
+    public void setSaison(Saison saison) {
+        this.saison = saison;
+    }
+
+    public List<Lien> getEpisodeLien() {
+        return episodeLien;
+    }
+
+    public void setEpisodeLien(List<Lien> episodeLien) {
+        this.episodeLien = episodeLien;
+    }
+
+    public Episode(Long id, Long num_Episode, String titre_Episode, Saison saison) {
+        this.id = id;
+        this.num_Episode = num_Episode;
+        this.titre_Episode = titre_Episode;
+        this.saison = saison;
+    }
+    
     
 
     public Long getId() {

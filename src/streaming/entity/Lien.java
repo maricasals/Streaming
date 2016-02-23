@@ -36,6 +36,39 @@ public class Lien implements Serializable {
     @JoinColumn(name = "ID_FILM")
     private Film quel_film;
     
+    public Lien(){
+    }
+
+    public Lien(Long id, String wrl, Episode quel_episode) {
+        this.id = id;
+        this.wrl = wrl;
+        this.quel_episode = quel_episode;
+    }
+
+    public String getWrl() {
+        return wrl;
+    }
+
+    public void setWrl(String wrl) {
+        this.wrl = wrl;
+    }
+
+    public Episode getQuel_episode() {
+        return quel_episode;
+    }
+
+    public void setQuel_episode(Episode quel_episode) {
+        this.quel_episode = quel_episode;
+    }
+
+    public Film getQuel_film() {
+        return quel_film;
+    }
+
+    public void setQuel_film(Film quel_film) {
+        this.quel_film = quel_film;
+    }
+    
     
 
     public Long getId() {

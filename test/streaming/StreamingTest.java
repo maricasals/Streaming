@@ -9,10 +9,19 @@ import java.util.Collection;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import junit.framework.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import streaming.entity.Episode;
 import streaming.entity.Film;
 import streaming.entity.Genre;
+import streaming.entity.Lien;
+import streaming.entity.Realisateur;
 import streaming.entity.Pays;
+import streaming.entity.Saison;
 import streaming.entity.Serie;
+import streaming.exception.ExceptionSynopsisNullOuVide;
+import streaming.exeptions.SynopsisVideException;
+import streaming.service.DBService;
 import streaming.service.EpisodeService;
 import streaming.service.FilmService;
 import streaming.service.GenreService;
@@ -37,285 +46,288 @@ public class StreamingTest {
     private LienService lienService = new LienService();
     private EpisodeService episodeService = new EpisodeService();
     
-//    @Before
-//    public void beforeTest() {
-//        new DBService().supprimerTout();
-//
-//        //Creation des Genres
-//        {
-//            Genre g = new Genre(1L, "Action");
-//            genreService.ajouter(g);
-//        }
-//        {
-//            Genre g = new Genre(2L, "Fantastique");
-//            genreService.ajouter(g);
-//        }
-//        {
-//            Genre g = new Genre(3L, "Policier");
-//            genreService.ajouter(g);
-//        }
-//        {
-//            Genre g = new Genre(4L, "Romance");
-//            genreService.ajouter(g);
-//        }
-//        {
-//            Genre g = new Genre(5L, "Animation");
-//            genreService.ajouter(g);
-//        }
-//        {
-//            Genre g = new Genre(6L, "Comedie");
-//            genreService.ajouter(g);
-//        }
-//
-//        //Creation des Pays
-//        {
-//            Pays p = new Pays(1L, "France");
-//            paysService.ajouter(p);
-//        }
-//        
-//        {
-//            Pays p = new Pays(2L, "USA");
-//            paysService.ajouter(p);
-//        }
-//        
-//        {
-//            Pays p = new Pays(3L, "UK");
-//            paysService.ajouter(p);
-//        }
-//        
-//        {
-//            Pays p = new Pays(4L, "Espagne");
-//            paysService.ajouter(p);
-//        }
-//        
-//        {
-//            Pays p = new Pays(5L, "Nouvelle-Zélande");
-//            paysService.ajouter(p);
-//        }
-//        
-//        //Creation des Realisateurs
-//        {
-//            Realisateur r = new Realisateur(1L, "COHEN", "Joel");
-//            realisateurService.ajouter(r);
-//        }
-//        
-//        {
-//            Realisateur r = new Realisateur(2L, "COHEN", "Ethan");
-//            realisateurService.ajouter(r);
-//        }
-//        
-//        {
-//            Realisateur r = new Realisateur(3L, "JACKSON", "Peter");
-//            realisateurService.ajouter(r);
-//        }
-//        
-//        {
-//            Realisateur r = new Realisateur(4L, "TARANTINO", "Quentin");
-//            realisateurService.ajouter(r);
-//        }
-//        
-//        {
-//            Realisateur r = new Realisateur(5L, "Maïwen", "Nuse");
-//            realisateurService.ajouter(r);
-//        }
-//        
-//        //Creation des Films
-//        {
-//            Genre g = genreService.rechercheGenre(1L);
-//            Pays p = paysService.recherchePays(2L);
-//            Film f = new Film(g, p, "Django Unchained", "Bla bla", 2012L);
-//            
-//            Realisateur r = realisateurService.rechercheRealisateur(4L);
-//            f.getCreateurs().add(r);
-//            
-//            p.getMes_films().add(f);
-//            g.getFilms().add(f);
-//            r.getMes_films().add(f);
-//                    
-//            filmService.ajouter(f);
-//        }
-//        
-//        {
-//            Genre g = genreService.rechercheGenre(1L);
-//            Pays p = paysService.recherchePays(2L);
-//            Film f = new Film(g, p, "Kill Bill", "Bla bla", 2003L);
-//            
-//            Realisateur r = realisateurService.rechercheRealisateur(4L);
-//            f.getCreateurs().add(r);
-//            
-//            p.getMes_films().add(f);
-//            g.getFilms().add(f);
-//            r.getMes_films().add(f);
-//                    
-//            filmService.ajouter(f);
-//        }
-//        
-//        {
-//            Genre g = genreService.rechercheGenre(1L);
-//            Pays p = paysService.recherchePays(2L);
-//            Film f = new Film(g, p, "Kill Bill 2", "Bla bla", 2004L);
-//            
-//            Realisateur r = realisateurService.rechercheRealisateur(4L);
-//            f.getCreateurs().add(r);
-//            
-//            p.getMes_films().add(f);
-//            g.getFilms().add(f);
-//            r.getMes_films().add(f);
-//                    
-//            filmService.ajouter(f);
-//        }
-//        
-//        {
-//            Genre g = genreService.rechercheGenre(1L);
-//            Pays p = paysService.recherchePays(2L);
-//            Film f = new Film(g, p, "Jackie Brown", "Bla bla", 1997L);
-//            
-//            Realisateur r = realisateurService.rechercheRealisateur(4L);
-//            f.getCreateurs().add(r);
-//            
-//            p.getMes_films().add(f);
-//            g.getFilms().add(f);
-//            r.getMes_films().add(f);
-//                    
-//            filmService.ajouter(f);
-//        }
-//        
-//        {
-//            Genre g = genreService.rechercheGenre(2L);
-//            Pays p = paysService.recherchePays(2L);
-//            Film f = new Film(g, p, "Sin City", "Bla bla", 2005L);
-//            
-//            Realisateur r = realisateurService.rechercheRealisateur(4L);
-//            f.getCreateurs().add(r);
-//            
-//            p.getMes_films().add(f);
-//            g.getFilms().add(f);
-//            r.getMes_films().add(f);
-//                    
-//            filmService.ajouter(f);
-//        }
-//        
-//        {
-//            Genre g = genreService.rechercheGenre(2L);
-//            Pays p = paysService.recherchePays(5L);
-//            Film f = new Film(g, p, "Bad Taste", "Bla bla", 1987L);
-//            
-//            Realisateur r = realisateurService.rechercheRealisateur(3L);
-//            f.getCreateurs().add(r);
-//            
-//            p.getMes_films().add(f);
-//            g.getFilms().add(f);
-//            r.getMes_films().add(f);
-//                    
-//            filmService.ajouter(f);
-//        }
-//        
-//        {
-//            Genre g = genreService.rechercheGenre(2L);
-//            Pays p = paysService.recherchePays(5L);
-//            Film f = new Film(g, p, "Braindead", "Bla bla", 1992L);
-//            
-//            Realisateur r = realisateurService.rechercheRealisateur(3L);
-//            f.getCreateurs().add(r);
-//            
-//            p.getMes_films().add(f);
-//            g.getFilms().add(f);
-//            r.getMes_films().add(f);
-//                    
-//            filmService.ajouter(f);
-//        }
-//        
-//        {
-//            Genre g = genreService.rechercheGenre(2L);
-//            Pays p = paysService.recherchePays(5L);
-//            Film f = new Film(g, p, "Le Hobbit", "Bla bla", 2015L);
-//            
-//            Realisateur r = realisateurService.rechercheRealisateur(3L);
-//            f.getCreateurs().add(r);
-//            
-//            p.getMes_films().add(f);
-//            g.getFilms().add(f);
-//            r.getMes_films().add(f);
-//                    
-//            filmService.ajouter(f);
-//        }
-//        
-//        {
-//            Genre g = genreService.rechercheGenre(3L);
-//            Pays p = paysService.recherchePays(1L);
-//            Film f = new Film(g, p, "Polisse", "Bla bla", 2011L);
-//            
-//            Realisateur r = realisateurService.rechercheRealisateur(5L);
-//            f.getCreateurs().add(r);
-//            
-//            p.getMes_films().add(f);
-//            g.getFilms().add(f);
-//            r.getMes_films().add(f);
-//                    
-//            filmService.ajouter(f);
-//        }
-//        
-//        {
-//            Genre g = genreService.rechercheGenre(6L);
-//            Pays p = paysService.recherchePays(2L);
-//            Film f = new Film(g, p, "Big Lebowski", "Bla bla", 1998L);
-//            
-//            Realisateur r = realisateurService.rechercheRealisateur(1L);
-//            f.getCreateurs().add(r);
-//            Realisateur r2 = realisateurService.rechercheRealisateur(2L);
-//            f.getCreateurs().add(r2);
-//            
-//            p.getMes_films().add(f);
-//            g.getFilms().add(f);
-//            r.getMes_films().add(f);
-//            r2.getMes_films().add(f);
-//                    
-//            filmService.ajouter(f);
-//        }
-//        
-//        {
-//            Genre g = genreService.rechercheGenre(6L);
-//            Pays p = paysService.recherchePays(2L);
-//            Film f = new Film(g, p, "Avec Cesar", "Bla bla", 2016L);
-//            
-//            Realisateur r = realisateurService.rechercheRealisateur(1L);
-//            f.getCreateurs().add(r);
-//            Realisateur r2 = realisateurService.rechercheRealisateur(2L);
-//            f.getCreateurs().add(r2);
-//            
-//            p.getMes_films().add(f);
-//            g.getFilms().add(f);
-//            r.getMes_films().add(f);
-//            r2.getMes_films().add(f);
-//                    
-//            filmService.ajouter(f);
-//        }
-//    {
-//            Pays p = paysService.recherchePays(2L);
-//            Serie serie = new Serie(1L,"Dexter","blablab",p);
-//            SerieService.ajouter(serie);
-//            for(Long i=1L;i<9L;i++){ //9 ou %9L
-//                Saison s = new Saison(i,i,serie);
-//                saisonService.ajouter(s);
-//                for(Long j=1L;j<9L;j++){
-//                    Episode e = new Episode(j,j,"titre",s);
-//                    episodeService.ajouter(e);
-//                    for(Long k=1L; k<9L; k++){
-//                        Lien l = new Lien(k,"url",e);
-//                        lienService.ajouter(l);
-//                    }
-//                }
-//            }
-//    }
-//}
-          
-//    }
+    @Before
+    public void beforeTest() throws ExceptionSynopsisNullOuVide, SynopsisVideException {
+        new DBService().supprimerTout();
 
-//    @Test
+        //Creation des Genres
+        {
+            Genre g = new Genre(1L, "Action");
+            genreService.ajouter(g);
+        }
+        {
+            Genre g = new Genre(2L, "Fantastique");
+            genreService.ajouter(g);
+        }
+        {
+            Genre g = new Genre(3L, "Policier");
+            genreService.ajouter(g);
+        }
+        {
+            Genre g = new Genre(4L, "Romance");
+            genreService.ajouter(g);
+        }
+        {
+            Genre g = new Genre(5L, "Animation");
+            genreService.ajouter(g);
+        }
+        {
+            Genre g = new Genre(6L, "Comedie");
+            genreService.ajouter(g);
+        }
+
+        //Creation des Pays
+        {
+            Pays p = new Pays(1L, "France");
+            paysService.ajouter(p);
+        }
+        
+        {
+            Pays p = new Pays(2L, "USA");
+            paysService.ajouter(p);
+        }
+        
+        {
+            Pays p = new Pays(3L, "UK");
+            paysService.ajouter(p);
+        }
+        
+        {
+            Pays p = new Pays(4L, "Espagne");
+            paysService.ajouter(p);
+        }
+        
+        {
+            Pays p = new Pays(5L, "Nouvelle-Zélande");
+            paysService.ajouter(p);
+        }
+        
+        //Creation des Realisateurs
+        {
+            Realisateur r = new Realisateur(1L, "COHEN", "Joel");
+            realisateurService.ajouter(r);
+        }
+        
+        {
+            Realisateur r = new Realisateur(2L, "COHEN", "Ethan");
+            realisateurService.ajouter(r);
+        }
+        
+        {
+            Realisateur r = new Realisateur(3L, "JACKSON", "Peter");
+            realisateurService.ajouter(r);
+        }
+        
+        {
+            Realisateur r = new Realisateur(4L, "TARANTINO", "Quentin");
+            realisateurService.ajouter(r);
+        }
+        
+        {
+            Realisateur r = new Realisateur(5L, "Maïwen", "Nuse");
+            realisateurService.ajouter(r);
+        }
+        
+        //Creation des Films
+        {
+            Genre g = genreService.rechercheGenre(1L);
+            Pays p = paysService.recherchePays(2L);
+            Film f = new Film(g, p, "Django Unchained", "Bla bla", 2012L);
+            
+            Realisateur r = realisateurService.rechercheRealisateur(4L);
+            f.getCreateurs().add(r);
+            
+            p.getMes_films().add(f);
+            g.getFilms().add(f);
+            r.getMes_films().add(f);
+                    
+            filmService.ajouter(f);
+        }
+        
+        {
+            Genre g = genreService.rechercheGenre(1L);
+            Pays p = paysService.recherchePays(2L);
+            Film f = new Film(g, p, "Kill Bill", "Bla bla", 2003L);
+            
+            Realisateur r = realisateurService.rechercheRealisateur(4L);
+            f.getCreateurs().add(r);
+            
+            p.getMes_films().add(f);
+            g.getFilms().add(f);
+            r.getMes_films().add(f);
+                    
+            filmService.ajouter(f);
+        }
+        
+        {
+            Genre g = genreService.rechercheGenre(1L);
+            Pays p = paysService.recherchePays(2L);
+            Film f = new Film(g, p, "Kill Bill 2", "Bla bla", 2004L);
+            
+            Realisateur r = realisateurService.rechercheRealisateur(4L);
+            f.getCreateurs().add(r);
+            
+            p.getMes_films().add(f);
+            g.getFilms().add(f);
+            r.getMes_films().add(f);
+                    
+            filmService.ajouter(f);
+        }
+        
+        {
+            Genre g = genreService.rechercheGenre(1L);
+            Pays p = paysService.recherchePays(2L);
+            Film f = new Film(g, p, "Jackie Brown", "Bla bla", 1997L);
+            
+            Realisateur r = realisateurService.rechercheRealisateur(4L);
+            f.getCreateurs().add(r);
+            
+            p.getMes_films().add(f);
+            g.getFilms().add(f);
+            r.getMes_films().add(f);
+                    
+            filmService.ajouter(f);
+        }
+        
+        {
+            Genre g = genreService.rechercheGenre(2L);
+            Pays p = paysService.recherchePays(2L);
+            Film f = new Film(g, p, "Sin City", "Bla bla", 2005L);
+            
+            Realisateur r = realisateurService.rechercheRealisateur(4L);
+            f.getCreateurs().add(r);
+            
+            p.getMes_films().add(f);
+            g.getFilms().add(f);
+            r.getMes_films().add(f);
+                    
+            filmService.ajouter(f);
+        }
+        
+        {
+            Genre g = genreService.rechercheGenre(2L);
+            Pays p = paysService.recherchePays(5L);
+            Film f = new Film(g, p, "Bad Taste", "Bla bla", 1987L);
+            
+            Realisateur r = realisateurService.rechercheRealisateur(3L);
+            f.getCreateurs().add(r);
+            
+            p.getMes_films().add(f);
+            g.getFilms().add(f);
+            r.getMes_films().add(f);
+                    
+            filmService.ajouter(f);
+        }
+        
+        {
+            Genre g = genreService.rechercheGenre(2L);
+            Pays p = paysService.recherchePays(5L);
+            Film f = new Film(g, p, "Braindead", "Bla bla", 1992L);
+            
+            Realisateur r = realisateurService.rechercheRealisateur(3L);
+            f.getCreateurs().add(r);
+            
+            p.getMes_films().add(f);
+            g.getFilms().add(f);
+            r.getMes_films().add(f);
+                    
+            filmService.ajouter(f);
+        }
+        
+        {
+            Genre g = genreService.rechercheGenre(2L);
+            Pays p = paysService.recherchePays(5L);
+            Film f = new Film(g, p, "Le Hobbit", "Bla bla", 2015L);
+            
+            Realisateur r = realisateurService.rechercheRealisateur(3L);
+            f.getCreateurs().add(r);
+            
+            p.getMes_films().add(f);
+            g.getFilms().add(f);
+            r.getMes_films().add(f);
+                    
+            filmService.ajouter(f);
+        }
+        
+        {
+            Genre g = genreService.rechercheGenre(3L);
+            Pays p = paysService.recherchePays(1L);
+            Film f = new Film(g, p, "Polisse", "Bla bla", 2011L);
+            
+            Realisateur r = realisateurService.rechercheRealisateur(5L);
+            f.getCreateurs().add(r);
+            
+            p.getMes_films().add(f);
+            g.getFilms().add(f);
+            r.getMes_films().add(f);
+                    
+            filmService.ajouter(f);
+        }
+        
+        {
+            Genre g = genreService.rechercheGenre(6L);
+            Pays p = paysService.recherchePays(2L);
+            Film f = new Film(g, p, "Big Lebowski", "Bla bla", 1998L);
+            
+            Realisateur r = realisateurService.rechercheRealisateur(1L);
+            f.getCreateurs().add(r);
+            Realisateur r2 = realisateurService.rechercheRealisateur(2L);
+            f.getCreateurs().add(r2);
+            
+            p.getMes_films().add(f);
+            g.getFilms().add(f);
+            r.getMes_films().add(f);
+            r2.getMes_films().add(f);
+                    
+            filmService.ajouter(f);
+        }
+        
+        {
+            Genre g = genreService.rechercheGenre(6L);
+            Pays p = paysService.recherchePays(2L);
+            Film f = new Film(g, p, "Avec Cesar", "Bla bla", 2016L);
+            
+            Realisateur r = realisateurService.rechercheRealisateur(1L);
+            f.getCreateurs().add(r);
+            Realisateur r2 = realisateurService.rechercheRealisateur(2L);
+            f.getCreateurs().add(r2);
+            
+            p.getMes_films().add(f);
+            g.getFilms().add(f);
+            r.getMes_films().add(f);
+            r2.getMes_films().add(f);
+                    
+            filmService.ajouter(f);
+        }
+    {
+            Pays p = paysService.recherchePays(2L);
+            Serie serie = new Serie(1L,"Dexter","blablab",p);
+            serieService.ajouter(serie);
+            for(Long i=1L;i<9;i++){ //9 ou %9L
+                Saison s = new Saison(i,i,serie);
+                saisonService.ajouter(s);
+                serie.getSaisons().add(s);
+                for(Long j=1L;j<i+1;j++){
+                    Episode e = new Episode(null,j,"titre",s);
+                    s.getEpisodes().add(e);
+                    episodeService.ajouter(e);
+                    for(Long k=1L; k<i+1; k++){
+                        Lien l = new Lien(null,"url",e);
+                        lienService.ajouter(l);
+                        e.getEpisodeLien().add(l);
+                    }
+                }
+            }
+    }
+}
+          
+
+
+    @Test
     public void dbsTest() {
-        EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
-        Genre g = new Genre();
-        System.out.println(em.createQuery("SELECT g FROM Genre g").getResultList());
+//        EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
+//        Genre g = new Genre();
+//        System.out.println(em.createQuery("SELECT g FROM Genre g").getResultList());
     }
     
 //    @Test
