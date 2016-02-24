@@ -169,10 +169,10 @@ public class JFramePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jBRealisateurActionPerformed
 
     private void jBGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGenreActionPerformed
-//        supprimerJPCentral();
-//        jpCentral=new JPannelListeGenre();
-//        add(jpCentral,BorderLayout.CENTER);
-//        repaint();
+        supprimerJPCentral();
+        jpCentral=new JPannelListeGenre();
+        add(jpCentral,BorderLayout.CENTER);
+        repaint();
     }//GEN-LAST:event_jBGenreActionPerformed
 
     private void jBLienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLienActionPerformed

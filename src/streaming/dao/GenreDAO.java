@@ -33,7 +33,7 @@ public class GenreDAO {
     public void supprimer(Genre g){
         EntityManager em = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
         em.getTransaction().begin();
-        em.createQuery("DELETE FROM Genre s WHERE g.id="+g.getId()).executeUpdate();
+        em.createQuery("DELETE FROM Genre s WHERE s.id="+g.getId()).executeUpdate();
         em.getTransaction().commit();
     }
     

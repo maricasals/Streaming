@@ -65,6 +65,8 @@ public class Genre implements Serializable {
     }
     
     
+    
+    
 
     @Override
     public int hashCode() {
