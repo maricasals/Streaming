@@ -49,7 +49,7 @@ public class JDialogRealisateur extends javax.swing.JDialog {
         jBAjouter = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Genre");
+        setTitle("Realisateur");
         getContentPane().setLayout(new java.awt.GridLayout(4, 3));
 
         jLabel2.setText("ID");

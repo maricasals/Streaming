@@ -5,6 +5,10 @@
  */
 package streaming.swing;
 
+import javax.swing.JDialog;
+import streaming.entity.Film;
+import streaming.service.FilmService;
+
 /**
  *
  * @author admin
@@ -16,6 +20,12 @@ public class JPannelListeFilm extends javax.swing.JPanel {
      */
     public JPannelListeFilm() {
         initComponents();
+        this.rafraichirJTable();
+    }
+    
+    public void rafraichirJTable(){
+        jtFilm.setModel(new TableModelListeFilm());
+        jtFilm.repaint();
     }
 
     /**
@@ -31,7 +41,7 @@ public class JPannelListeFilm extends javax.swing.JPanel {
         jBNouveauFilm = new javax.swing.JButton();
         jBSupprimer = new javax.swing.JButton();
         jtFilms = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtFilm = new javax.swing.JTable();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -41,17 +51,27 @@ public class JPannelListeFilm extends javax.swing.JPanel {
         jBNouveauFilm.setFocusable(false);
         jBNouveauFilm.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jBNouveauFilm.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBNouveauFilm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBNouveauFilmActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jBNouveauFilm);
 
         jBSupprimer.setText("Supprimer");
         jBSupprimer.setFocusable(false);
         jBSupprimer.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jBSupprimer.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBSupprimer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSupprimerActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jBSupprimer);
 
         add(jToolBar1, java.awt.BorderLayout.NORTH);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtFilm.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -62,17 +82,34 @@ public class JPannelListeFilm extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jtFilms.setViewportView(jTable1);
+        jtFilms.setViewportView(jtFilm);
 
         add(jtFilms, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSupprimerActionPerformed
+        int i=jtFilm.getSelectedRow();
+        if(i==-1)
+            return;
+        
+        Long l = (Long) jtFilm.getModel().getValueAt(i, 0);
+        FilmService filmService = new FilmService();
+        Film f = filmService.rechercheFilm(l);
+        filmService.supprimer(f);
+        this.rafraichirJTable();
+    }//GEN-LAST:event_jBSupprimerActionPerformed
+
+    private void jBNouveauFilmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNouveauFilmActionPerformed
+        JDialog dial = new JDialogFilm(null, true, this);
+        dial.setVisible(true);
+    }//GEN-LAST:event_jBNouveauFilmActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBNouveauFilm;
     private javax.swing.JButton jBSupprimer;
-    private javax.swing.JTable jTable1;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JTable jtFilm;
     private javax.swing.JScrollPane jtFilms;
     // End of variables declaration//GEN-END:variables
 }
