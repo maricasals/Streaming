@@ -8,6 +8,7 @@ package streaming.swing;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.swing.JDialog;
+import org.springframework.beans.factory.annotation.Autowired;
 import streaming.entity.Realisateur;
 import streaming.service.RealisateurService;
 
@@ -20,6 +21,10 @@ public class JPannelListeRealisateur extends javax.swing.JPanel {
     /**
      * Creates new form JPannelListeFilm
      */
+    
+    @Autowired
+    private RealisateurService realisateurService;
+    
     public JPannelListeRealisateur() {
         initComponents();
         rafraichirJTable();
@@ -101,7 +106,6 @@ public class JPannelListeRealisateur extends javax.swing.JPanel {
             return;
         
         Long l = (Long) jtRealisateur.getModel().getValueAt(i, 0);
-        RealisateurService realisateurService = new RealisateurService();
         Realisateur r = realisateurService.rechercheRealisateur(l);
         realisateurService.supprimer(r);
         this.rafraichirJTable();

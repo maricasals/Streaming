@@ -7,6 +7,7 @@ package streaming.swing;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import org.springframework.beans.factory.annotation.Autowired;
 import streaming.entity.Realisateur;
 import streaming.service.RealisateurService;
 
@@ -15,6 +16,9 @@ import streaming.service.RealisateurService;
  * @author admin
  */
 public class JDialogRealisateur extends javax.swing.JDialog {
+    
+    @Autowired
+    private RealisateurService realisateurService;
     
     private JPannelListeRealisateur jpReal;
     /**
@@ -172,7 +176,6 @@ public class JDialogRealisateur extends javax.swing.JDialog {
         
         Realisateur r = new Realisateur(null,jTextNom.getText(),jTextPrenom.getText()); 
         
-        RealisateurService realisateurService = new RealisateurService();
         realisateurService.ajouter(r);
         this.jpReal.rafraichirJTable();
         this.setVisible(false);

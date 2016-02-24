@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import org.springframework.beans.factory.annotation.Autowired;
 import streaming.entity.Film;
 import streaming.entity.Genre;
 import streaming.entity.Lien;
@@ -28,6 +29,8 @@ import streaming.service.RealisateurService;
  */
 public class JDialogFilm extends javax.swing.JDialog {
 
+    @Autowired
+    FilmService filmService;
     
     private JPannelListeFilm jpFilm;
     GenreService genreService = new GenreService();
@@ -318,8 +321,6 @@ public class JDialogFilm extends javax.swing.JDialog {
         int indPays = JComboBoxPays.getSelectedIndex();
         int indLien = jComboBoxLien.getSelectedIndex();
         int indRealisateur = jComboBoxRealisateur.getSelectedIndex();
-        
-        FilmService filmService = new FilmService();
         
         Film f = new Film(genreService.rechercheGenre(indGenre), paysService.recherchePays(indPays), jTextTitre.getText(), "blab", Long.parseLong(jTextAnnee.getText()));
         f.setCreateurs((List<Realisateur>) realisateurService.rechercheRealisateur(indRealisateur));

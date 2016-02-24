@@ -9,6 +9,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.swing.table.DefaultTableModel;
+import org.springframework.beans.factory.annotation.Autowired;
 import streaming.entity.Realisateur;
 import streaming.service.RealisateurService;
 
@@ -22,15 +23,16 @@ public class TableModelListeRealisateur extends DefaultTableModel{
     private List<Realisateur> realisateur = null;
     private int nbReal = 0;
     
+    @Autowired
+    private RealisateurService realisateurService = new RealisateurService();
+    
     public TableModelListeRealisateur() {
         
         String[] titres = new String[]{"ID","Nom","Prenom"};
         setColumnIdentifiers(titres);        
         
-        RealisateurService realisateurService = new RealisateurService();
         realisateur = realisateurService.listRealisateur();
         this.nbReal= realisateur.size();
-        
 
     }
 

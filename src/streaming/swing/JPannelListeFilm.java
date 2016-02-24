@@ -6,6 +6,7 @@
 package streaming.swing;
 
 import javax.swing.JDialog;
+import org.springframework.beans.factory.annotation.Autowired;
 import streaming.entity.Film;
 import streaming.service.FilmService;
 
@@ -15,6 +16,9 @@ import streaming.service.FilmService;
  */
 public class JPannelListeFilm extends javax.swing.JPanel {
 
+    @Autowired
+    FilmService filmService;
+    
     /**
      * Creates new form JPannelListeFilm
      */
@@ -93,7 +97,6 @@ public class JPannelListeFilm extends javax.swing.JPanel {
             return;
         
         Long l = (Long) jtFilm.getModel().getValueAt(i, 0);
-        FilmService filmService = new FilmService();
         Film f = filmService.rechercheFilm(l);
         filmService.supprimer(f);
         this.rafraichirJTable();

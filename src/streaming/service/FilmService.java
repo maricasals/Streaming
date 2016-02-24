@@ -10,6 +10,8 @@ import streaming.exception.ExceptionSynopsisNullOuVide;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import streaming.dao.FilmDAO;
 import streaming.entity.Film;
 
@@ -18,9 +20,12 @@ import streaming.entity.Film;
  *
  * @author admin
  */
+@Service
 public class FilmService {
     
-    private FilmDAO dao= new FilmDAO();
+    @Autowired
+    private FilmDAO dao;
+    
     Film l = new Film();
 
     
