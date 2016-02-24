@@ -7,11 +7,15 @@ package streaming.swing;
 
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author admin
  */
+@Component
 public class JFramePrincipal extends javax.swing.JFrame {
 
     /**
@@ -20,17 +24,18 @@ public class JFramePrincipal extends javax.swing.JFrame {
     public JFramePrincipal() {
         initComponents();
     }
-    JPanel jpCentral=null;
-    private void supprimerJPCentral(){
-        if (jpCentral==null)
+    JPanel jpCentral = null;
+
+    private void supprimerJPCentral() {
+        if (jpCentral == null) {
             return;
+        }
         this.remove(this.jpCentral);
     }
-            
+
     /**
      *
      */
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -113,36 +118,36 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
     private void jBFilmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFilmActionPerformed
         supprimerJPCentral();
-        jpCentral=new JPannelListeFilm();
-        add(jpCentral,BorderLayout.CENTER);
+        jpCentral = new JPannelListeFilm();
+        add(jpCentral, BorderLayout.CENTER);
         repaint();
     }//GEN-LAST:event_jBFilmActionPerformed
 
     private void jBRealisateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRealisateurActionPerformed
         supprimerJPCentral();
-        jpCentral=new JPannelListeRealisateur();
-        add(jpCentral,BorderLayout.CENTER);
+        jpCentral = new JPannelListeRealisateur();
+        add(jpCentral, BorderLayout.CENTER);
         repaint();
     }//GEN-LAST:event_jBRealisateurActionPerformed
 
     private void jBGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGenreActionPerformed
         supprimerJPCentral();
-        jpCentral=new JPannelListeGenre();
-        add(jpCentral,BorderLayout.CENTER);
+        jpCentral = new JPannelListeGenre();
+        add(jpCentral, BorderLayout.CENTER);
         repaint();
     }//GEN-LAST:event_jBGenreActionPerformed
 
     private void jBPaysActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPaysActionPerformed
         supprimerJPCentral();
-        jpCentral=new JPannelListePays();
-        add(jpCentral,BorderLayout.CENTER);
+        jpCentral = new JPannelListePays();
+        add(jpCentral, BorderLayout.CENTER);
         repaint();
     }//GEN-LAST:event_jBPaysActionPerformed
 
     private void jBSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSerieActionPerformed
         supprimerJPCentral();
-        jpCentral=new JPannelListeSerie();
-        add(jpCentral,BorderLayout.CENTER);
+        jpCentral = new JPannelListeSerie();
+        add(jpCentral, BorderLayout.CENTER);
         repaint();
     }//GEN-LAST:event_jBSerieActionPerformed
 
@@ -176,10 +181,10 @@ public class JFramePrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JFramePrincipal jf = new JFramePrincipal();
-                jf.setSize(800,600);
+                JFramePrincipal jf = new FileSystemXmlApplicationContext("file:/C:\\Users\\admin\\Documents\\NetBeansProjects\\Streaming\\newSpringXMLConfig.xml").getBean(JFramePrincipal.class);
+                jf.setSize(800, 600);
                 jf.setVisible(true);
-                
+
             }
         });
     }
