@@ -45,9 +45,6 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jBRealisateur = new javax.swing.JButton();
         jBPays = new javax.swing.JButton();
         jBGenre = new javax.swing.JButton();
-        jBLien = new javax.swing.JButton();
-        jBEpisode = new javax.swing.JButton();
-        jBSaison = new javax.swing.JButton();
         jBSerie = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -98,39 +95,6 @@ public class JFramePrincipal extends javax.swing.JFrame {
         });
         jToolBar1.add(jBGenre);
 
-        jBLien.setText("Liens");
-        jBLien.setFocusable(false);
-        jBLien.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jBLien.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jBLien.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBLienActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jBLien);
-
-        jBEpisode.setText("Episodes");
-        jBEpisode.setFocusable(false);
-        jBEpisode.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jBEpisode.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jBEpisode.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBEpisodeActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jBEpisode);
-
-        jBSaison.setText("Saisons");
-        jBSaison.setFocusable(false);
-        jBSaison.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jBSaison.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jBSaison.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBSaisonActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jBSaison);
-
         jBSerie.setText("Séries");
         jBSerie.setFocusable(false);
         jBSerie.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -154,13 +118,6 @@ public class JFramePrincipal extends javax.swing.JFrame {
         repaint();
     }//GEN-LAST:event_jBFilmActionPerformed
 
-    private void jBEpisodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEpisodeActionPerformed
-        supprimerJPCentral();
-        jpCentral=new JPannelListeEpisode();
-        add(jpCentral,BorderLayout.CENTER);
-        repaint();
-    }//GEN-LAST:event_jBEpisodeActionPerformed
-
     private void jBRealisateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRealisateurActionPerformed
         supprimerJPCentral();
         jpCentral=new JPannelListeRealisateur();
@@ -175,26 +132,12 @@ public class JFramePrincipal extends javax.swing.JFrame {
         repaint();
     }//GEN-LAST:event_jBGenreActionPerformed
 
-    private void jBLienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLienActionPerformed
-        supprimerJPCentral();
-        jpCentral=new JPannelListeLien();
-        add(jpCentral,BorderLayout.CENTER);
-        repaint();
-    }//GEN-LAST:event_jBLienActionPerformed
-
     private void jBPaysActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPaysActionPerformed
         supprimerJPCentral();
         jpCentral=new JPannelListePays();
         add(jpCentral,BorderLayout.CENTER);
         repaint();
     }//GEN-LAST:event_jBPaysActionPerformed
-
-    private void jBSaisonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSaisonActionPerformed
-        supprimerJPCentral();
-        jpCentral=new JPannelListeSaison();
-        add(jpCentral,BorderLayout.CENTER);
-        repaint();
-    }//GEN-LAST:event_jBSaisonActionPerformed
 
     private void jBSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSerieActionPerformed
         supprimerJPCentral();
@@ -242,13 +185,10 @@ public class JFramePrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBEpisode;
     private javax.swing.JButton jBFilm;
     private javax.swing.JButton jBGenre;
-    private javax.swing.JButton jBLien;
     private javax.swing.JButton jBPays;
     private javax.swing.JButton jBRealisateur;
-    private javax.swing.JButton jBSaison;
     private javax.swing.JButton jBSerie;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
