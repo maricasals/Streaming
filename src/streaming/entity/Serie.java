@@ -44,6 +44,13 @@ public class Serie implements Serializable {
 
     public Serie(){
     }
+
+    public Serie(Long id, String titre_serie, String synopsis, Pays pays) {
+        this.id = id;
+        this.titre_serie = titre_serie;
+        this.synopsis = synopsis;
+        this.pays = pays;
+    }
     
     public Serie(Long id, String titre_serie, String synopsis) {
         this.id = id;
