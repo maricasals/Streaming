@@ -35,6 +35,7 @@ public class JDialogSerie extends javax.swing.JDialog {
     public JDialogSerie(java.awt.Frame parent, boolean modal, JPannelListeSerie jp) {
         super(parent, modal);
         initComponents();
+        init();
         jpSeries=jp;
     }
     PaysService paysService = new PaysService();
