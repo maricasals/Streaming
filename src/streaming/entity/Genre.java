@@ -90,7 +90,7 @@ public class Genre implements Serializable {
 
     @Override
     public String toString() {
-        return "streaming.Genre[ id=" + id + " ]";
+        return getNom();
     }
 
     public int setId() {

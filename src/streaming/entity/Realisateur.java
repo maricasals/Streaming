@@ -101,7 +101,7 @@ public class Realisateur implements Serializable {
 
     @Override
     public String toString() {
-        return "streaming.entity.Realisateur[ id=" + id + " ]";
+        return getNom() + getPrenom();
     }
     
 }
