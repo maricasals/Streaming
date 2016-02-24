@@ -19,6 +19,7 @@ import javax.persistence.OneToMany;
  * passe par la
  * @author admin
  */
+
 @Entity
 public class Pays implements Serializable {
 
