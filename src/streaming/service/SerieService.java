@@ -9,6 +9,8 @@ import java.util.Collection;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import streaming.dao.SerieDAO;
 import streaming.entity.Serie;
 import streaming.exeptions.SynopsisVideException;
@@ -17,9 +19,12 @@ import streaming.exeptions.SynopsisVideException;
  *
  * @author admin
  */
+@Service
 public class SerieService {
 
-    private SerieDAO dao = new SerieDAO();
+    @Autowired
+    private SerieDAO dao;
+    
     Serie l = new Serie();
 
     public void ajouter(Serie l) throws SynopsisVideException {

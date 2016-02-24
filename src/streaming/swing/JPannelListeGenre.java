@@ -6,6 +6,7 @@
 package streaming.swing;
 
 import javax.swing.JDialog;
+import org.springframework.beans.factory.annotation.Autowired;
 import streaming.entity.Genre;
 import streaming.service.GenreService;
 
@@ -15,7 +16,8 @@ import streaming.service.GenreService;
  */
 public class JPannelListeGenre extends javax.swing.JPanel {
     
-    private GenreService gs = new GenreService();
+    @Autowired
+    private GenreService gs;
     /**
      * Creates new form JPannelListeFilm
      */

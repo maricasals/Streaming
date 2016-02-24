@@ -8,6 +8,7 @@ package streaming.swing;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import streaming.entity.Genre;
 import streaming.entity.Lien;
 import streaming.entity.Pays;
@@ -28,6 +29,15 @@ import streaming.service.SerieService;
  */
 public class JDialogSerie extends javax.swing.JDialog {
     
+    @Autowired
+    PaysService paysService;
+    
+    @Autowired
+    SaisonService saisonService;
+    
+    List<Pays> listePays = paysService.listPays();
+    List<Saison> listeSaison = saisonService.listSaisons();
+    
     private JPannelListeSerie jpSeries;
     /**
      * Creates new form JDialogGenre
@@ -38,11 +48,7 @@ public class JDialogSerie extends javax.swing.JDialog {
         init();
         jpSeries=jp;
     }
-    PaysService paysService = new PaysService();
-    SaisonService saisonService = new SaisonService();
     
-    List<Pays> listePays = paysService.listPays();
-    List<Saison> listeSaison = saisonService.listSaisons();
     
     public void init(){
         for(Pays p : listePays)

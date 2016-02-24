@@ -7,9 +7,10 @@ package streaming;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import streaming.service.SerieService;
+import streaming.service.GenreService;
 
 /**
  *
@@ -17,24 +18,14 @@ import streaming.service.SerieService;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "file:/C:\\Users\\admin\\Documents\\NetBeansProjects\\Streaming\\newSpringXMLConfig.xml")
-public class SerieTest {
+public class GenreTest {
+    
+    @Autowired
+    private GenreService g;
     
     @Test
-    public void springSerieTest(){
+    public void springGenreTest(){
         System.out.println("Test okey");
     }
     
-//    @Test
-    public void ListerSerieParPaysTest() {
-        SerieService ss = new SerieService();
-        ss.ListerSeriesParPays(2L);
-    }
-    
-//    @Test
-    public void ListerSerieParTitreTest() {
-        SerieService ss = new SerieService();
-        ss.ListerSeriesParTitre("Dexter");
-    }
-    
-
 }
