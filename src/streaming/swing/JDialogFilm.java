@@ -32,11 +32,20 @@ public class JDialogFilm extends javax.swing.JDialog {
     @Autowired
     FilmService filmService;
     
+    @Autowired
+    GenreService genreService;
+    
+    @Autowired
+    PaysService paysService;
+    
+    @Autowired
+    RealisateurService realisateurService;
+    
+    @Autowired
+    LienService lienService;
+    
     private JPannelListeFilm jpFilm;
-    GenreService genreService = new GenreService();
-    PaysService paysService = new PaysService();
-    RealisateurService realisateurService =  new RealisateurService();
-    LienService lienService = new LienService();
+    
     
     List<Genre> listeGenre = genreService.listGenres();
     List<Realisateur> listeRealisateur = realisateurService.listRealisateur();
