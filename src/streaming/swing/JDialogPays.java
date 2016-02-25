@@ -34,6 +34,7 @@ public class JDialogPays extends javax.swing.JDialog {
     
     public JDialogPays(){
         setModal(true);
+        initComponents();
     }
 
 

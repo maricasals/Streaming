@@ -104,7 +104,6 @@ public class JPannelListeRealisateur extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBNouveauRealisateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNouveauRealisateurActionPerformed
-        jDialogRealisateur.setModal(true);
         jDialogRealisateur.setJpReal(this);
         jDialogRealisateur.setVisible(true);
     }//GEN-LAST:event_jBNouveauRealisateurActionPerformed

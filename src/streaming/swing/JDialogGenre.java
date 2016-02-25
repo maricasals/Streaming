@@ -36,6 +36,7 @@ public class JDialogGenre extends javax.swing.JDialog {
 
     public JDialogGenre() {
         setModal(true);
+        initComponents();
     }
 
     /**

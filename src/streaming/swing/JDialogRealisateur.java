@@ -36,6 +36,7 @@ public class JDialogRealisateur extends javax.swing.JDialog {
     
     public JDialogRealisateur() {
         setModal(true);
+        initComponents();
     }
 
     /**
