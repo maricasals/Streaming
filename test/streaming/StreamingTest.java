@@ -46,7 +46,7 @@ public class StreamingTest {
     private LienService lienService = new LienService();
     private EpisodeService episodeService = new EpisodeService();
     
-    @Before
+//    @Before
     public void beforeTest() throws ExceptionSynopsisNullOuVide, SynopsisVideException {
         new DBService().supprimerTout();
 
