@@ -192,6 +192,7 @@ public class JDialogRealisateur extends javax.swing.JDialog {
         
         realisateurService.ajouter(r);
 //        this.jpReal.rafraichirJTable();
+        this.setVisible(false);
 //        this.setVisible(false);
 
     }//GEN-LAST:event_jBAjouterActionPerformed
