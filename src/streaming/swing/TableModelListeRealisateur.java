@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.swing.table.DefaultTableModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import streaming.entity.Realisateur;
 import streaming.service.RealisateurService;
 
@@ -17,6 +18,7 @@ import streaming.service.RealisateurService;
  *
  * @author admin
  */
+@Component
 public class TableModelListeRealisateur extends DefaultTableModel{
 
     
@@ -24,15 +26,15 @@ public class TableModelListeRealisateur extends DefaultTableModel{
     private int nbReal = 0;
     
     @Autowired
-    private RealisateurService realisateurService = new RealisateurService();
+    private RealisateurService realisateurService;
     
     public TableModelListeRealisateur() {
         
         String[] titres = new String[]{"ID","Nom","Prenom"};
         setColumnIdentifiers(titres);        
         
-        realisateur = realisateurService.listRealisateur();
-        this.nbReal= realisateur.size();
+//        realisateur = realisateurService.listRealisateur();
+//        this.nbReal= realisateur.size();
 
     }
 

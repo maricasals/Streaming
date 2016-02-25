@@ -20,6 +20,9 @@ import org.springframework.stereotype.Component;
 public class JFramePrincipal extends javax.swing.JFrame {
     @Autowired
     JPannelListePays jPannelListePays;
+    
+    @Autowired
+    JPannelListeRealisateur jPannelListeRealisateur;
     /**
      * Creates new form JFramePrincipal
      */
@@ -126,10 +129,10 @@ public class JFramePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jBFilmActionPerformed
 
     private void jBRealisateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRealisateurActionPerformed
-//        supprimerJPCentral();
-//        jpCentral = new JPannelListeRealisateur();
-//        add(jpCentral, BorderLayout.CENTER);
-//        repaint();
+        supprimerJPCentral();
+        jpCentral = jPannelListeRealisateur;
+        add(jpCentral, BorderLayout.CENTER);
+        repaint();
     }//GEN-LAST:event_jBRealisateurActionPerformed
 
     private void jBGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGenreActionPerformed

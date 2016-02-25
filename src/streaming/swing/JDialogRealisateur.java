@@ -5,9 +5,8 @@
  */
 package streaming.swing;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import streaming.entity.Realisateur;
 import streaming.service.RealisateurService;
 
@@ -15,19 +14,28 @@ import streaming.service.RealisateurService;
  *
  * @author admin
  */
+@Component
 public class JDialogRealisateur extends javax.swing.JDialog {
     
     @Autowired
     private RealisateurService realisateurService;
     
+    @Autowired
     private JPannelListeRealisateur jpReal;
+
+    public JPannelListeRealisateur getJpReal() {
+        return jpReal;
+    }
+
+    public void setJpReal(JPannelListeRealisateur jpReal) {
+        this.jpReal = jpReal;
+    }
     /**
      * Creates new form JDialogGenre
      */
-    public JDialogRealisateur(java.awt.Frame parent, boolean modal, JPannelListeRealisateur jp) {
-        super(parent, modal);
-        initComponents();
-        jpReal=jp;
+    
+    public JDialogRealisateur() {
+        setModal(true);
     }
 
     /**
@@ -177,8 +185,8 @@ public class JDialogRealisateur extends javax.swing.JDialog {
         Realisateur r = new Realisateur(null,jTextNom.getText(),jTextPrenom.getText()); 
         
         realisateurService.ajouter(r);
-        this.jpReal.rafraichirJTable();
-        this.setVisible(false);
+//        this.jpReal.rafraichirJTable();
+//        this.setVisible(false);
 
     }//GEN-LAST:event_jBAjouterActionPerformed
 

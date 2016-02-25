@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.swing.JDialog;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import streaming.entity.Realisateur;
 import streaming.service.RealisateurService;
 
@@ -16,6 +17,7 @@ import streaming.service.RealisateurService;
  *
  * @author admin
  */
+@Component
 public class JPannelListeRealisateur extends javax.swing.JPanel {
 
     /**
@@ -23,15 +25,21 @@ public class JPannelListeRealisateur extends javax.swing.JPanel {
      */
     
     @Autowired
+    private JDialogRealisateur jDialogRealisateur;
+    
+    @Autowired
     private RealisateurService realisateurService;
+    
+    @Autowired
+    private TableModelListeRealisateur tableModelListeRealisateur;
     
     public JPannelListeRealisateur() {
         initComponents();
-        rafraichirJTable();
+//        rafraichirJTable();
     }
     
     public void rafraichirJTable(){
-        jtRealisateur.setModel(new TableModelListeRealisateur());
+        jtRealisateur.setModel(tableModelListeRealisateur);
         jtRealisateur.repaint();
     }
 
@@ -96,8 +104,9 @@ public class JPannelListeRealisateur extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBNouveauRealisateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNouveauRealisateurActionPerformed
-        JDialog dial = new JDialogRealisateur(null, true, this);
-        dial.setVisible(true);
+        jDialogRealisateur.setModal(true);
+        jDialogRealisateur.setJpReal(this);
+        jDialogRealisateur.setVisible(true);
     }//GEN-LAST:event_jBNouveauRealisateurActionPerformed
 
     private void jBSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSupprimerActionPerformed
@@ -109,12 +118,6 @@ public class JPannelListeRealisateur extends javax.swing.JPanel {
         Realisateur r = realisateurService.rechercheRealisateur(l);
         realisateurService.supprimer(r);
         this.rafraichirJTable();
-        
-        
-//        EntityManager em  = Persistence.createEntityManagerFactory("StreamingPU").createEntityManager();
-//        em.getTransaction().begin();
-//        em.createQuery("DELETE FROM Realisateur r WHERE r.id=" + l).executeUpdate();
-//        em.getTransaction().commit();
 
     }//GEN-LAST:event_jBSupprimerActionPerformed
 
