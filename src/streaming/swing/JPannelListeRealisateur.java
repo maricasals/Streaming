@@ -5,6 +5,7 @@
  */
 package streaming.swing;
 
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.swing.JDialog;
@@ -32,13 +33,19 @@ public class JPannelListeRealisateur extends javax.swing.JPanel {
     
     @Autowired
     private TableModelListeRealisateur tableModelListeRealisateur;
+    private int nbReal;
+    
+         
+    public void rafraichir(){
+        
+    }
     
     public JPannelListeRealisateur() {
         initComponents();
-//        rafraichirJTable();
     }
     
     public void rafraichirJTable(){
+        tableModelListeRealisateur.rafraichir();
         jtRealisateur.setModel(tableModelListeRealisateur);
         jtRealisateur.repaint();
     }
@@ -104,6 +111,7 @@ public class JPannelListeRealisateur extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBNouveauRealisateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNouveauRealisateurActionPerformed
+        rafraichirJTable();
         jDialogRealisateur.setJpReal(this);
         jDialogRealisateur.setVisible(true);
     }//GEN-LAST:event_jBNouveauRealisateurActionPerformed

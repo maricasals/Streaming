@@ -28,6 +28,11 @@ public class TableModelListeRealisateur extends DefaultTableModel{
     @Autowired
     private RealisateurService realisateurService;
     
+    public void rafraichir(){
+        realisateur = realisateurService.listRealisateur();
+        this.nbReal= realisateur.size();
+    }
+    
     public TableModelListeRealisateur() {
         
         String[] titres = new String[]{"ID","Nom","Prenom"};

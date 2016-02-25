@@ -37,7 +37,10 @@ public class JDialogRealisateur extends javax.swing.JDialog {
     public JDialogRealisateur() {
         setModal(true);
         initComponents();
+        
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
