@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import streaming.entity.Genre;
 import streaming.entity.Lien;
 import streaming.entity.Pays;
@@ -27,6 +28,7 @@ import streaming.service.SerieService;
  *
  * @author admin
  */
+@Component
 public class JDialogSerie extends javax.swing.JDialog {
     
     @Autowired
@@ -35,19 +37,38 @@ public class JDialogSerie extends javax.swing.JDialog {
     @Autowired
     SaisonService saisonService;
     
-    List<Pays> listePays = paysService.listPays();
-    List<Saison> listeSaison = saisonService.listSaisons();
+    @Autowired
+    SerieService serieService;
     
+    List<Pays> listePays;
+    List<Saison> listeSaison;
+    
+    @Autowired
     private JPannelListeSerie jpSeries;
     /**
      * Creates new form JDialogGenre
      */
-    public JDialogSerie(java.awt.Frame parent, boolean modal, JPannelListeSerie jp) {
-        super(parent, modal);
+//    public JDialogSerie(java.awt.Frame parent, boolean modal, JPannelListeSerie jp) {
+//        super(parent, modal);
+//        initComponents();
+////        init();
+//        jpSeries=jp;
+//    }
+
+    public JDialogSerie() {
+        this.setModal(true);
         initComponents();
-        init();
-        jpSeries=jp;
     }
+
+    public JPannelListeSerie getJpSeries() {
+        return jpSeries;
+    }
+
+    public void setJpSeries(JPannelListeSerie jpSeries) {
+        this.jpSeries = jpSeries;
+    }
+    
+    
     
     
     public void init(){
@@ -263,7 +284,6 @@ public class JDialogSerie extends javax.swing.JDialog {
         Serie r = new Serie(null, jTextTitre.getText(), jTextSynopsis.getText());
         r.setSaisons((List<Saison>) saisonService.recheSaison(indSaison));
         r.setPays(paysService.recherchePays(indPays));
-        SerieService serieService = new SerieService();
         try {
             serieService.ajouter(r);
         } catch (SynopsisVideException ex) {

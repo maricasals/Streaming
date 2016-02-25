@@ -8,9 +8,8 @@ package streaming.swing;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import streaming.entity.Film;
 import streaming.entity.Genre;
 import streaming.entity.Lien;
@@ -27,6 +26,7 @@ import streaming.service.RealisateurService;
  *
  * @author admin
  */
+@Component
 public class JDialogFilm extends javax.swing.JDialog {
 
     @Autowired
@@ -44,15 +44,21 @@ public class JDialogFilm extends javax.swing.JDialog {
     @Autowired
     LienService lienService;
     
+    @Autowired
     private JPannelListeFilm jpFilm;
     
     
-    List<Genre> listeGenre = genreService.listGenres();
-    List<Realisateur> listeRealisateur = realisateurService.listRealisateur();
-    List<Pays> listePays = paysService.listPays();
-    List<Lien> listeLien = lienService.listerLiens();
+    List<Genre> listeGenre ;
+    List<Realisateur> listeRealisateur ;
+    List<Pays> listePays;
+    List<Lien> listeLien ;
     
-    public void init(){
+    public void refreshCombos(){
+        listeGenre = genreService.listGenres();
+        listeRealisateur = realisateurService.listRealisateur();
+        listePays = paysService.listPays();
+        listeLien = lienService.listerLiens();
+        
         for(Genre g : listeGenre)
             jComboBoxGenre.addItem(g.getNom());
         for(Pays p : listePays)
@@ -62,17 +68,34 @@ public class JDialogFilm extends javax.swing.JDialog {
         for(Realisateur r : listeRealisateur)
             jComboBoxRealisateur.addItem(r.getNom());
     }
+
+    public JDialogFilm() {
+        this.setModal(true);
+        initComponents();
+//        init();
+    }
+
+    public JPannelListeFilm getJpFilm() {
+        return jpFilm;
+    }
+
+    public void setJpFilm(JPannelListeFilm jpFilm) {
+        this.jpFilm = jpFilm;
+    }
+    
     
     
     /**
      * Creates new form JDialogGenre
      */
-    public JDialogFilm(java.awt.Frame parent, boolean modal, JPannelListeFilm jf) {
-        super(parent, modal);
-        initComponents();
-        init();
-        jpFilm=jf;
-    }
+//    public JDialogFilm(java.awt.Frame parent, boolean modal, JPannelListeFilm jf) {
+//        super(parent, modal);
+//        initComponents();
+//        init();
+//        jpFilm=jf;
+//    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

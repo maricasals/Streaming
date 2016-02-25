@@ -26,6 +26,12 @@ public class JFramePrincipal extends javax.swing.JFrame {
     
     @Autowired
     JPannelListeGenre jPannelListeGenre;
+    
+    @Autowired
+    JPannelListeFilm jPannelListeFilm;
+    
+    @Autowired
+    JPannelListeSerie jPannelListeSerie;
     /**
      * Creates new form JFramePrincipal
      */
@@ -125,10 +131,10 @@ public class JFramePrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBFilmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFilmActionPerformed
-//        supprimerJPCentral();
-//        jpCentral = new JPannelListeFilm();
-//        add(jpCentral, BorderLayout.CENTER);
-//        repaint();
+        supprimerJPCentral();
+        jpCentral = jPannelListeFilm;
+        add(jpCentral, BorderLayout.CENTER);
+        repaint();
     }//GEN-LAST:event_jBFilmActionPerformed
 
     private void jBRealisateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRealisateurActionPerformed
@@ -153,10 +159,10 @@ public class JFramePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jBPaysActionPerformed
 
     private void jBSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSerieActionPerformed
-//        supprimerJPCentral();
-//        jpCentral = new JPannelListeSerie();
-//        add(jpCentral, BorderLayout.CENTER);
-//        repaint();
+        supprimerJPCentral();
+        jpCentral = jPannelListeSerie;
+        add(jpCentral, BorderLayout.CENTER);
+        repaint();
     }//GEN-LAST:event_jBSerieActionPerformed
 
     /**

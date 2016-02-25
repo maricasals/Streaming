@@ -6,6 +6,8 @@
 package streaming.swing;
 
 import javax.swing.JDialog;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import streaming.entity.Serie;
 import streaming.service.SerieService;
 
@@ -13,17 +15,27 @@ import streaming.service.SerieService;
  *
  * @author admin
  */
+@Component
 public class JPannelListeSerie extends javax.swing.JPanel {
 
     /**
      * Creates new form JPannelListeFilm
      */
+    @Autowired
+    TableModelListeSerie tableModelListSerie;
+    
+    @Autowired
+    JDialogSerie jDialogSerie;
+    
+    @Autowired
+    SerieService serieService;
+            
     public JPannelListeSerie() {
         initComponents();
-        rafraichirJTable();
+//        rafraichirJTable();
     }
     public void rafraichirJTable(){
-        jtSeries.setModel(new TableModelListeSerie());
+        jtSeries.setModel(tableModelListSerie);
         jtSeries.repaint();
     }
     /**
@@ -86,8 +98,8 @@ public class JPannelListeSerie extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBNouvelleSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNouvelleSerieActionPerformed
-        JDialog dial = new JDialogSerie(null, true, this);
-        dial.setVisible(true);
+        jDialogSerie.setJpSeries(this);
+        jDialogSerie.setVisible(true);
     }//GEN-LAST:event_jBNouvelleSerieActionPerformed
 
     private void jBSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSupprimerActionPerformed
@@ -96,7 +108,7 @@ public class JPannelListeSerie extends javax.swing.JPanel {
             return;
         
         Long l = (Long) jtSeries.getModel().getValueAt(i, 0);
-        SerieService serieService = new SerieService();
+        
         Serie r = serieService.rechSerie(l);
         serieService.supprimer(r);
         this.rafraichirJTable();

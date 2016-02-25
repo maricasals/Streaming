@@ -7,6 +7,7 @@ package streaming.swing;
 
 import javax.swing.JDialog;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import streaming.entity.Film;
 import streaming.service.FilmService;
 
@@ -14,21 +15,28 @@ import streaming.service.FilmService;
  *
  * @author admin
  */
+@Component
 public class JPannelListeFilm extends javax.swing.JPanel {
 
     @Autowired
     FilmService filmService;
+    
+    @Autowired
+    TableModelListeFilm tablemodelListeFilm;
+    
+    @Autowired
+    JDialogFilm jDialogFilm;
     
     /**
      * Creates new form JPannelListeFilm
      */
     public JPannelListeFilm() {
         initComponents();
-        this.rafraichirJTable();
+//        this.rafraichirJTable();
     }
     
     public void rafraichirJTable(){
-        jtFilm.setModel(new TableModelListeFilm());
+        jtFilm.setModel(tablemodelListeFilm);
         jtFilm.repaint();
     }
 
@@ -103,8 +111,9 @@ public class JPannelListeFilm extends javax.swing.JPanel {
     }//GEN-LAST:event_jBSupprimerActionPerformed
 
     private void jBNouveauFilmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNouveauFilmActionPerformed
-        JDialog dial = new JDialogFilm(null, true, this);
-        dial.setVisible(true);
+        
+        jDialogFilm.setJpFilm(this);
+        jDialogFilm.setVisible(true);
     }//GEN-LAST:event_jBNouveauFilmActionPerformed
 
 

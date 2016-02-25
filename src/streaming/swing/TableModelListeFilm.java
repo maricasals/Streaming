@@ -6,10 +6,9 @@
 package streaming.swing;
 
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
 import javax.swing.table.DefaultTableModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import streaming.entity.Film;
 import streaming.service.FilmService;
 
@@ -17,6 +16,7 @@ import streaming.service.FilmService;
  *
  * @author admin
  */
+@Component
 public class TableModelListeFilm extends DefaultTableModel{
 
     @Autowired
@@ -30,8 +30,8 @@ public class TableModelListeFilm extends DefaultTableModel{
         String[] titres = new String[]{"ID","Annee","Titre","Genre","Pays","Realisateur","Lien"};
         setColumnIdentifiers(titres);        
         
-        film = filmService.listFilm();
-        this.nbReal= film.size();
+//        film = filmService.listFilm();
+//        this.nbReal= film.size();
         
 
     }
