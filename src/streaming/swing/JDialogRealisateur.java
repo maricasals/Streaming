@@ -186,7 +186,9 @@ public class JDialogRealisateur extends javax.swing.JDialog {
     private void jBAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAjouterActionPerformed
         // TODO add your handling code here:
         
+        
         Realisateur r = new Realisateur(null,jTextNom.getText(),jTextPrenom.getText()); 
+        
         
         realisateurService.ajouter(r);
 //        this.jpReal.rafraichirJTable();
