@@ -5,6 +5,8 @@
  */
 package streaming.swing;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import streaming.entity.Pays;
 import streaming.service.PaysService;
 
@@ -12,17 +14,28 @@ import streaming.service.PaysService;
  *
  * @author admin
  */
+@Component
 public class JDialogPays extends javax.swing.JDialog {
-    
+    @Autowired
+    private PaysService paysService;
+    @Autowired
     private JPannelListePays jpPays;
+
+    public JPannelListePays getJpPays() {
+        return jpPays;
+    }
+
+    public void setJpPays(JPannelListePays jpPays) {
+        this.jpPays = jpPays;
+    }
     /**
      * Creates new form JDialogGenre
      */
-    public JDialogPays(java.awt.Frame parent, boolean modal, JPannelListePays jp) {
-        super(parent, modal);
-        initComponents();
-        jpPays=jp;
+    
+    public JDialogPays(){
+        setModal(true);
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -154,6 +167,8 @@ public class JDialogPays extends javax.swing.JDialog {
         });
         getContentPane().add(jBAjouter);
 
+        getAccessibleContext().setAccessibleName("Pays");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -169,7 +184,6 @@ public class JDialogPays extends javax.swing.JDialog {
         // TODO add your handling code here:
         Pays p = new Pays(null, jTextNom.getText());
         
-        PaysService paysService = new PaysService();
         paysService.ajouter(p);
         this.jpPays.rafraichirJTable();
         this.setVisible(false);

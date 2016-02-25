@@ -7,6 +7,7 @@ package streaming.swing;
 
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.stereotype.Component;
@@ -17,7 +18,8 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class JFramePrincipal extends javax.swing.JFrame {
-
+    @Autowired
+    JPannelListePays jPannelListePays;
     /**
      * Creates new form JFramePrincipal
      */
@@ -117,38 +119,38 @@ public class JFramePrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBFilmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFilmActionPerformed
-        supprimerJPCentral();
-        jpCentral = new JPannelListeFilm();
-        add(jpCentral, BorderLayout.CENTER);
-        repaint();
+//        supprimerJPCentral();
+//        jpCentral = new JPannelListeFilm();
+//        add(jpCentral, BorderLayout.CENTER);
+//        repaint();
     }//GEN-LAST:event_jBFilmActionPerformed
 
     private void jBRealisateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRealisateurActionPerformed
-        supprimerJPCentral();
-        jpCentral = new JPannelListeRealisateur();
-        add(jpCentral, BorderLayout.CENTER);
-        repaint();
+//        supprimerJPCentral();
+//        jpCentral = new JPannelListeRealisateur();
+//        add(jpCentral, BorderLayout.CENTER);
+//        repaint();
     }//GEN-LAST:event_jBRealisateurActionPerformed
 
     private void jBGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGenreActionPerformed
-        supprimerJPCentral();
-        jpCentral = new JPannelListeGenre();
-        add(jpCentral, BorderLayout.CENTER);
-        repaint();
+//        supprimerJPCentral();
+//        jpCentral = new JPannelListeGenre();
+//        add(jpCentral, BorderLayout.CENTER);
+//        repaint();
     }//GEN-LAST:event_jBGenreActionPerformed
 
     private void jBPaysActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPaysActionPerformed
         supprimerJPCentral();
-        jpCentral = new JPannelListePays();
+        jpCentral = jPannelListePays;
         add(jpCentral, BorderLayout.CENTER);
         repaint();
     }//GEN-LAST:event_jBPaysActionPerformed
 
     private void jBSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSerieActionPerformed
-        supprimerJPCentral();
-        jpCentral = new JPannelListeSerie();
-        add(jpCentral, BorderLayout.CENTER);
-        repaint();
+//        supprimerJPCentral();
+//        jpCentral = new JPannelListeSerie();
+//        add(jpCentral, BorderLayout.CENTER);
+//        repaint();
     }//GEN-LAST:event_jBSerieActionPerformed
 
     /**

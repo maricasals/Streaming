@@ -28,7 +28,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="jBNouveauRealisateur">
+        <Component class="javax.swing.JButton" name="jBNouveauPays">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nouveau Pays"/>
             <Property name="focusable" type="boolean" value="false"/>
@@ -36,7 +36,7 @@
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBNouveauRealisateurActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBNouveauPaysActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jBSupprimer">

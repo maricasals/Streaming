@@ -8,6 +8,7 @@ package streaming.swing;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import streaming.entity.Pays;
 import streaming.service.PaysService;
 
@@ -15,10 +16,12 @@ import streaming.service.PaysService;
  *
  * @author admin
  */
+@Component
 public class TableModelListePays extends DefaultTableModel{
 
     @Autowired
     private PaysService paysService;
+    
     private List<Pays> pays = null;
     private int nbPays = 0;
     
@@ -26,8 +29,8 @@ public class TableModelListePays extends DefaultTableModel{
         
         String[] titres = new String[]{"ID","Nom"};
         setColumnIdentifiers(titres);        
-        pays = paysService.listPays();
-        this.nbPays= pays.size();
+//        pays = paysService.listPays();
+//        this.nbPays= pays.size();
         
 
     }

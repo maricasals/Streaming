@@ -6,6 +6,8 @@
 package streaming.swing;
 
 import javax.swing.JDialog;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import streaming.entity.Pays;
 import streaming.service.PaysService;
 
@@ -13,18 +15,25 @@ import streaming.service.PaysService;
  *
  * @author admin
  */
+@Component
 public class JPannelListePays extends javax.swing.JPanel {
-
+    @Autowired
+    JDialogPays jDialogPays;
+    @Autowired
+    PaysService paysService;
+    @Autowired
+    TableModelListePays tableModelListePays;
+    
     /**
      * Creates new form JPannelListeFilm
      */
     public JPannelListePays() {
         initComponents();
-        rafraichirJTable();
+//        rafraichirJTable();
     }
     
     public void rafraichirJTable(){
-        jtPays.setModel(new TableModelListePays());
+        jtPays.setModel(tableModelListePays);
         jtPays.repaint();
     }
 
@@ -38,7 +47,7 @@ public class JPannelListePays extends javax.swing.JPanel {
     private void initComponents() {
 
         jToolBar1 = new javax.swing.JToolBar();
-        jBNouveauRealisateur = new javax.swing.JButton();
+        jBNouveauPays = new javax.swing.JButton();
         jBSupprimer = new javax.swing.JButton();
         jtPayss = new javax.swing.JScrollPane();
         jtPays = new javax.swing.JTable();
@@ -47,16 +56,16 @@ public class JPannelListePays extends javax.swing.JPanel {
 
         jToolBar1.setRollover(true);
 
-        jBNouveauRealisateur.setText("Nouveau Pays");
-        jBNouveauRealisateur.setFocusable(false);
-        jBNouveauRealisateur.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jBNouveauRealisateur.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jBNouveauRealisateur.addActionListener(new java.awt.event.ActionListener() {
+        jBNouveauPays.setText("Nouveau Pays");
+        jBNouveauPays.setFocusable(false);
+        jBNouveauPays.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBNouveauPays.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBNouveauPays.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBNouveauRealisateurActionPerformed(evt);
+                jBNouveauPaysActionPerformed(evt);
             }
         });
-        jToolBar1.add(jBNouveauRealisateur);
+        jToolBar1.add(jBNouveauPays);
 
         jBSupprimer.setText("Supprimer");
         jBSupprimer.setFocusable(false);
@@ -87,10 +96,11 @@ public class JPannelListePays extends javax.swing.JPanel {
         add(jtPayss, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBNouveauRealisateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNouveauRealisateurActionPerformed
-        JDialog dial = new JDialogPays(null, true, this);
-        dial.setVisible(true);
-    }//GEN-LAST:event_jBNouveauRealisateurActionPerformed
+    private void jBNouveauPaysActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNouveauPaysActionPerformed
+        jDialogPays.setModal(true);
+        jDialogPays.setJpPays(this);
+        jDialogPays.setVisible(true);
+    }//GEN-LAST:event_jBNouveauPaysActionPerformed
 
     private void jBSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSupprimerActionPerformed
         int i=jtPays.getSelectedRow();
@@ -98,7 +108,7 @@ public class JPannelListePays extends javax.swing.JPanel {
             return;
         
         Long l = (Long) jtPays.getModel().getValueAt(i, 0);
-        PaysService paysService = new PaysService();
+        
         Pays r = paysService.recherchePays(l);
         paysService.supprimer(r);
         this.rafraichirJTable();
@@ -113,7 +123,7 @@ public class JPannelListePays extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBNouveauRealisateur;
+    private javax.swing.JButton jBNouveauPays;
     private javax.swing.JButton jBSupprimer;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JTable jtPays;
