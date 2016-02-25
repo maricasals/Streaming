@@ -10,28 +10,33 @@ import streaming.entity.Genre;
 import streaming.service.GenreService;
 import javax.swing.table.DefaultTableModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 /**
  *
  * @author admin
  */
+@Component
 public class TableModelListGenre extends DefaultTableModel{
+    @Autowired
+    private GenreService genreService;
     
     private List<Genre> genres = null;
-    private int nbReal = 0;
+    private int nbGenre = 0;
     
-    @Autowired
-    private GenreService gs;
     
     public TableModelListGenre() {
         
         String[] titres = new String[]{"ID","Genre"};
         setColumnIdentifiers(titres);        
     
-        genres = gs.listGenres();
-        nbReal = genres.size();
+//        genres = genreService.listGenres();
+//        nbGenre = genres.size();
         
     }
-    
+    @Override
+    public int getRowCount() {
+        return nbGenre;
+    }
 
     @Override
     public Object getValueAt(int row, int column) {
@@ -57,13 +62,4 @@ public class TableModelListGenre extends DefaultTableModel{
         
     }
 
-    @Override
-    public int getColumnCount() {
-        return 2;
-    }
-
-    @Override
-    public int getRowCount() {
-        return nbReal;
-    }
 }
